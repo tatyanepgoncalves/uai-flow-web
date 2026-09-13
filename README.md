@@ -63,7 +63,7 @@ uai-flow-web/
 
 ---
 
-## ⚡ Como Executar o Projeto Localmente
+## Como Executar o Projeto Localmente
 
 ### Pré-requisitos
 
