@@ -1,3 +1,5 @@
+import Header from '@/components/layout/auth/header'
+
 interface LayoutAuthProps {
   children: React.ReactNode
 }
@@ -5,7 +7,7 @@ interface LayoutAuthProps {
 export default function LayoutAuth({ children }: LayoutAuthProps) {
   return (
     <div>
-      LayoutAuth
+      <Header />
       <div>{children}</div>
     </div>
   )

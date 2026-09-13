@@ -74,7 +74,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div>
+        <div className="flex items-center gap-4">
           <Button render={<Link href="/entrar" />} variant="link">
             Entrar
           </Button>
