@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn(
-          'flex min-h-screen w-full flex-col font-sans',
+          'flex min-h-screen w-full flex-col bg-background-dark font-sans text-text-primary',
           geistSans.variable,
           jetBrainsMono.variable
         )}

@@ -1,3 +1,5 @@
+import Header from '@/components/layout/public/header'
+
 interface LayoutPublicProps {
   children: React.ReactNode
 }
@@ -5,7 +7,7 @@ interface LayoutPublicProps {
 export default function LayoutPublic({ children }: LayoutPublicProps) {
   return (
     <div>
-      LayoutPublic
+      <Header />
       <div>{children}</div>
     </div>
   )
