@@ -29,7 +29,7 @@
   --color-background-dark: var(--background-dark);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-mono);
+  --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-heading);
 
   /* ==========================================
