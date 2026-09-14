@@ -32,7 +32,8 @@ export const cefrOptions = [
   },
   {
     badge: 'SELECIONADO • TÉCNICO FUNCIONAL',
-    description: 'Reuniões diárias técnicas, revisão de PRs e atualizações assíncronas',
+    description:
+      'Reuniões diárias técnicas, revisão de PRs e atualizações assíncronas',
     id: 'B1',
     level: 'B1',
     title: 'Espontâneo',
@@ -45,10 +46,21 @@ export const cefrOptions = [
   },
 ]
 
-export const quickTags = ['+ Frontend', '+ Backend', '+ DevOps / SRE', '+ AI / Data']
+export const quickTags = [
+  '+ Frontend',
+  '+ Backend',
+  '+ DevOps / SRE',
+  '+ AI / Data',
+]
 
 export const scenarios = [
-   { id: 'code-reviews', label: 'Code Reviews & PR Comments' },
-    { id: 'daily-standups', label: 'Daily Standups & Sprints' },
-    { id: 'design-docs', label: 'Design Docs & RFCs' },
+  { id: 'code-reviews', label: 'Code Reviews & PR Comments' },
+  { id: 'daily-standups', label: 'Daily Standups & Sprints' },
+  { id: 'design-docs', label: 'Design Docs & RFCs' },
+]
+
+export const SCENARIOS_OPTIONS = [
+  { id: 'code-reviews', label: 'Code Reviews & PR Comments' },
+  { id: 'daily-standups', label: 'Daily Standups & Sprints' },
+  { id: 'design-docs', label: 'Design Docs & RFCs' },
 ]
