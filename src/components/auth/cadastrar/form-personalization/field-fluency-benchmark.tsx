@@ -1,12 +1,12 @@
-import type { Dispatch, SetStateAction } from 'react'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
+import { RegisterFormData } from '@/schemas/auth/register-schema'
 import { cefrOptions } from '@/types/personalization-form'
 
 interface FieldFluencyBenchmarkProps {
-  cefr: string
-  setCefr: Dispatch<SetStateAction<string>>
+  cefr: RegisterFormData['cefr']
+  setCefr: (value: RegisterFormData['cefr']) => void
 }
 
 export default function FieldFluencyBenchmark({

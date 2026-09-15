@@ -6,7 +6,7 @@ import { quickTags } from '@/types/personalization-form'
 
 interface FieldDisciplineProfessionProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  quickTagHandlers: Record<string, () => void>
+  quickTagHandlers: (tag: string) => void
   value: string
 }
 
@@ -39,7 +39,7 @@ export default function FieldDisciplineProfession({
             <button
               className="rounded-md border border-zinc-800 bg-zinc-900/60 px-2 py-0.5 text-xs text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-200"
               key={tag}
-              onClick={quickTagHandlers[tag]}
+              onClick={() => quickTagHandlers(tag)}
               type="button"
             >
               {tag}

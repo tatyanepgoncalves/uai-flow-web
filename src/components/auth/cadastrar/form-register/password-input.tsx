@@ -1,25 +1,19 @@
 'use client'
 
 import { Eye, EyeOff, Lock, ShieldCheck } from 'lucide-react'
-import { useCallback, useState } from 'react'
+import type { UseFormReturn } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import useFormRegister from '@/hooks/cadastrar/use-form-register'
 import { calculateStrength } from '@/lib/utils'
+import type { RegisterFormData } from '@/schemas/auth/register-schema'
 
-export function PasswordInput() {
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
+interface PasswordInputProps {
+  form: UseFormReturn<RegisterFormData>
+}
 
-  const handlePasswordChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setPassword(event.target.value)
-    },
-    []
-  )
-
-  const handleTogglePassword = useCallback(() => {
-    setShowPassword((current) => !current)
-  }, [])
+export function PasswordInput({ form }: PasswordInputProps) {
+  const { showPassword, password, handleTogglePassword } = useFormRegister(form)
 
   const strength = calculateStrength(password)
 
@@ -31,26 +25,25 @@ export function PasswordInput() {
           className="font-mono text-zinc-400 uppercase tracking-wider"
           htmlFor="password"
         >
-          PASSWORD
+          Senha
         </Label>
         {password ? (
           <span className={`text-xs ${strength.textColor}`}>
-            entropy: {strength.label}
+            entropia: {strength.label}
           </span>
         ) : null}
       </div>
 
-      {/* Input de Senha com Ícones nas Pontas */}
+      {/* Input de Senha */}
       <div className="relative flex w-full items-center">
         <Lock className="pointer-events-none absolute left-3.5 z-10 h-4 w-4 text-zinc-400" />
 
         <Input
-          className="border-zinc-700 bg-zinc-800 px-10 text-white placeholder:text-zinc-600 focus-visible:border-violet-500 focus-visible:ring-violet-500/30"
+          {...form.register('password')}
+          className="h-11 border-zinc-700 bg-zinc-800 px-10 text-white placeholder:text-zinc-600 focus-visible:border-violet-500 focus-visible:ring-violet-500/30"
           id="password"
-          onChange={handlePasswordChange}
           placeholder="••••••••••••"
           type={showPassword ? 'text' : 'password'}
-          value={password}
         />
 
         <button
@@ -65,6 +58,12 @@ export function PasswordInput() {
           )}
         </button>
       </div>
+
+      {form.formState.errors.password ? (
+        <p className="pt-1 text-red-500 text-xs">
+          {form.formState.errors.password.message}
+        </p>
+      ) : null}
 
       {/* Barras de progresso da força (4 segmentos) */}
       <div className="grid grid-cols-4 gap-2 pt-1">

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import { Toaster } from '@/components/ui/toast'
+import { AuthProvider } from '@/context/auth-context'
 import { cn } from '@/lib/utils'
 
 const geistSans = Geist({
@@ -29,7 +31,8 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         )}
         suppressHydrationWarning
       >
-        {children}
+        <Toaster />
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   )

@@ -36,45 +36,45 @@ export function calculateStrength(password: string) {
       return {
         barsText: '1/4 bars',
         color: 'bg-red-500',
-        label: 'weak',
+        label: 'fraca',
         score: 1,
-        text: 'Weak: add numbers & symbols',
+        text: 'Fraca: adicione números e símbolos',
         textColor: 'text-red-400',
       }
     case 2:
       return {
         barsText: '2/4 bars',
         color: 'bg-amber-500',
-        label: 'medium',
+        label: 'média',
         score: 2,
-        text: 'Medium: add more characters',
+        text: 'Média: adicione mais caracteres',
         textColor: 'text-amber-400',
       }
     case 3:
       return {
         barsText: '3/4 bars',
         color: 'bg-emerald-500',
-        label: 'strong',
+        label: 'forte',
         score: 3,
-        text: 'Strong: 12+ chars, mixed symbols & numbers',
+        text: 'Forte: 12+ caracteres, símbolos mistos & números',
         textColor: 'text-emerald-400',
       }
     case 4:
       return {
         barsText: '4/4 bars',
         color: 'bg-emerald-400',
-        label: 'very strong',
+        label: 'muito forte',
         score: 4,
-        text: 'Very Strong: robust & secure',
+        text: 'Muito Forte: robusto & seguro',
         textColor: 'text-emerald-400',
       }
     default:
       return {
         barsText: '0/4 bars',
         color: 'bg-zinc-700',
-        label: 'weak',
+        label: 'fraca',
         score: 0,
-        text: 'Too short',
+        text: 'Muito curta',
         textColor: 'text-zinc-500',
       }
   }

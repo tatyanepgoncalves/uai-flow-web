@@ -3,7 +3,7 @@ import { Label } from '@/components/ui/label'
 import { SCENARIOS_OPTIONS } from '@/types/personalization-form'
 
 interface FieldFocusScenariosProps {
-  scenarioHandlers: Record<string, () => void>
+  scenarioHandlers: (id: string) => void
   scenarios: string[]
 }
 
@@ -34,7 +34,7 @@ export default function FieldFocusScenarios({
                 checked={isChecked}
                 className="border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
                 id={scenario.id}
-                onCheckedChange={scenarioHandlers[scenario.id]}
+                onCheckedChange={() => scenarioHandlers(scenario.id)}
               />
               <Label
                 className="cursor-pointer font-medium text-xs leading-tight"
