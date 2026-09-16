@@ -92,8 +92,8 @@ export async function loginUser(data: LoginFormData) {
 
     await setToken(token)
 
-    return { message, success: true, token, user }
-  } catch (error) {
+    return { error: null, message, success: true, token, user }
+  } catch (error: unknown) {
     if (isAxiosError(error)) {
       const apiMessage =
         error.response?.data?.message || 'Erro na comunicação com o servidor.'
@@ -101,8 +101,11 @@ export async function loginUser(data: LoginFormData) {
       throw new Error(apiMessage)
     }
 
+    if (error instanceof Error) {
+      throw error
+    }
+
     // biome-ignore lint/style/useErrorCause: it's necessary
     throw new Error('Ocorreu um erro inesperado ao realizar o login.')
   }
 }
-

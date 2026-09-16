@@ -4,8 +4,8 @@ import { Sparkles } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import useFormPersonalization from '@/hooks/auth/cadastrar/use-form-personalization'
 import type { RegisterFormData } from '@/schemas/auth/register-schema'
-
 import FieldAcquisitionLanguage from './field-acquisiton-language'
 import FieldDisciplineProfession from './field-discipline-profission'
 import FieldFluencyBenchmark from './field-fluency-benchmark'
@@ -19,7 +19,13 @@ interface FormPersonalizationProps {
 export default function FormPersonalization({
   isLoading = false,
 }: FormPersonalizationProps) {
-  const { watch, setValue } = useFormContext<RegisterFormData>()
+  const { watch } = useFormContext<RegisterFormData>()
+  const {
+    handleProfessionChange,
+    handleCefrChange,
+    handleQuickTag,
+    handleToggleScenario,
+  } = useFormPersonalization()
 
   const cefr = watch('cefr')
   const profession = watch('profession')
@@ -37,25 +43,17 @@ export default function FormPersonalization({
 
         <TabsContent className="space-y-6" value="step-1">
           <FieldAcquisitionLanguage />
-          <FieldFluencyBenchmark
-            cefr={cefr}
-            setCefr={(val) => setValue('cefr', val, { shouldValidate: true })}
-          />
+          <FieldFluencyBenchmark cefr={cefr} setCefr={handleCefrChange} />
         </TabsContent>
 
         <TabsContent className="space-y-6" value="step-2">
           <FieldDisciplineProfession
-            onChange={(e) => setValue('profession', e.target.value)}
-            quickTagHandlers={(tag) => setValue('profession', tag)}
+            onChange={handleProfessionChange}
+            quickTagHandlers={handleQuickTag}
             value={profession}
           />
           <FieldFocusScenarios
-            scenarioHandlers={(id) => {
-              const current = scenarios.includes(id)
-                ? scenarios.filter((item) => item !== id)
-                : [...scenarios, id]
-              setValue('scenarios', current)
-            }}
+            scenarioHandlers={handleToggleScenario}
             scenarios={scenarios}
           />
 
@@ -65,7 +63,9 @@ export default function FormPersonalization({
             type="submit"
           >
             <Sparkles className="mr-2 h-4 w-4" />
-            {isLoading ? 'Cadastrando...' : 'Concluir cadastro e abrir o painel'}
+            {isLoading
+              ? 'Cadastrando...'
+              : 'Concluir cadastro e abrir o painel'}
             <Sparkles className="ml-2 h-4 w-4" />
           </Button>
         </TabsContent>

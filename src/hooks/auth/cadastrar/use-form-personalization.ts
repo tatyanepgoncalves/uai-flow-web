@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import type { RegisterFormData } from '@/schemas/auth/register-schema'
 
 // Schema de validação
 export const personalizationSchema = z.object({
@@ -28,7 +29,7 @@ export default function useFormPersonalization() {
     resolver: zodResolver(personalizationSchema),
   })
 
-  const { watch, setValue, handleSubmit } = form
+  const { watch, setValue } = form
 
   // Observa os valores do formulário
   const cefr = watch('cefr')
@@ -70,28 +71,30 @@ export default function useFormPersonalization() {
     [form, setValue]
   )
 
-  // Submissão final do cadastro
-  const onSubmit = useCallback(async (data: PersonalizationFormData) => {
-    try {
-      // Exemplo de envio para sua API
-      console.log('Payload de cadastro enviado:', data)
+  const handleCefrChange = useCallback(
+    (value: RegisterFormData['cefr']) => {
+      setValue('cefr', value, { shouldValidate: true })
+    },
+    [setValue]
+  )
 
-      // await api.post('/users/personalization', data)
-    } catch (error) {
-      console.error('Erro ao salvar personalização:', error)
-    }
-  }, [])
+  const handleQuickTag = useCallback(
+    (tag: string) => {
+      setValue('profession', tag)
+    },
+    [setValue]
+  )
 
   return {
     cefr,
     form,
-    handleFormSubmit: handleSubmit(onSubmit),
+    handleCefrChange,
     handleProfessionChange,
+    handleQuickTag,
     handleSelectTag,
     handleToggleScenario,
     profession,
     scenarios,
     setCefr,
-    
   }
 }

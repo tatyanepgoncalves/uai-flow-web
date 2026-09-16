@@ -4,7 +4,7 @@ import { Eye, EyeOff, Lock, ShieldCheck } from 'lucide-react'
 import type { UseFormReturn } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import useFormRegister from '@/hooks/cadastrar/use-form-register'
+import useFormRegister from '@/hooks/auth/cadastrar/use-form-register'
 import { calculateStrength } from '@/lib/utils'
 import type { RegisterFormData } from '@/schemas/auth/register-schema'
 
