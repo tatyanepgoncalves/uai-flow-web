@@ -1,3 +1,4 @@
+import Footer from '@/components/layout/public/footer'
 import Header from '@/components/layout/public/header'
 
 interface LayoutPublicProps {
@@ -9,6 +10,7 @@ export default function LayoutPublic({ children }: LayoutPublicProps) {
     <div>
       <Header />
       <div>{children}</div>
+      <Footer />
     </div>
   )
 }

@@ -6,9 +6,8 @@ export const menuNav = [
 ]
 
 export const menuNavPrivate = [
-
-  {href: '/central-chunks', label: 'Central de Chunks'},
-  {href: '/biblioteca-de-frases', label: 'Biblioteca de Frases'},
-  {href: '/perfil-e-conteudo-com-ia', label: 'Perfil e Conteúdo com IA'},
-  {href: '/analise-de-dados', label: 'Análise de Dados'}
+  { href: '/central-chunks', label: 'Central de Chunks' },
+  { href: '/biblioteca-de-frases', label: 'Biblioteca de Frases' },
+  { href: '/perfil-e-conteudo-com-ia', label: 'Perfil e Conteúdo com IA' },
+  { href: '/analise-de-dados', label: 'Análise de Dados' },
 ]

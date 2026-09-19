@@ -1,7 +1,7 @@
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
-import { RegisterFormData } from '@/schemas/auth/register-schema'
+import type { RegisterFormData } from '@/schemas/auth/register-schema'
 import { cefrOptions } from '@/types/personalization-form'
 
 interface FieldFluencyBenchmarkProps {
